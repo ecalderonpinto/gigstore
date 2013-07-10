@@ -1,0 +1,1059 @@
+/* 
+    Document   : gigStore
+    Created on : 29/02/2012, 10:28:05
+    Author     : Manel Márquez Bonilla
+    Description: Purpose of the stylesheet follows.
+*/
+/*
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    margin: 20px 0px 0px 0px;
+    padding: 0;
+    background: #191919 url('/modelo-base/images/tienda/img07.jpg') no-repeat right top;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 11px;
+    color: #3C3C3C;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #CD3788;
+}
+
+h1 {
+    font-size: 2.6em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.6em;
+}
+
+p, ul, ol {
+    margin-top: 0;
+    line-height: 240%;
+    text-align: justify;
+}
+
+a {
+    color: #CD3788;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a img {
+    border: none;
+}
+
+img.left {
+    float: left;
+    margin: 7px 30px 0 0;
+}
+
+img.right {
+    float: right;
+    margin: 7px 0 0 30px;
+}
+
+hr {
+    display: none;
+}
+
+form {
+    margin-bottom: 10px;
+}
+
+form .texto{
+    width: 180px;
+    height: 12px;
+    margin-left: 10px;
+    padding: 2px 2px 2px 2px;
+    border: solid 1px #66665E;
+    color: #66665E;
+}
+
+form textarea{
+    width: 500px;
+    height: 80px;
+}
+
+form .boton {
+    width: 75px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    background: url('/modelo-base/images/tienda/img03.jpg') no-repeat left top;
+    border: none;
+    color: #FFFFFF;
+}
+
+form select {
+    width: 130px;
+    height: 20px;
+    padding: 0px 2px;
+    background-color: #E1E1E1;
+    border: none;
+    color: #3C3C3C;
+}
+
+form p.etiqueta {
+    margin: 5px 0 -5px 0;
+    width: 250px;
+}
+
+form .check {
+    float: left;
+}
+
+#formulario ul {
+    list-style: none;
+}
+
+#formulario ul li{
+    margin-left: -40px;
+    color: #CD3788;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#cuerpo {
+    position: relative;
+    top: 115px;
+    width: 930px;
+    margin: 0px auto;
+    padding: 10px 10px 10px 10px;
+    background: #E1E1E1;
+    overflow: hidden;
+}
+
+#contenido {    
+    float: right;
+    width: 620px;
+    padding: 0px 0px 0px 0px;
+}
+
+#contenido h1 {
+    margin: 0 0 10px 10px; 
+}
+
+.cuadro {
+    width: 620px;
+    background: url('/modelo-base/images/tienda/img05.jpg') repeat-y left top;
+    padding: 0 0 0px 25px;
+}
+
+.cuadro .titulo {
+    width: 570px;
+    height: 44px;
+    margin: 0px;
+    padding: 36px 0px 0px 0px;
+    background: url('/modelo-base/images/tienda/img11.jpg') repeat-x left bottom;
+}
+
+.cuadro .meta {
+    margin-left: 2px;
+    padding: 4px 50px 2px 0px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #CD3788;
+}
+
+.cuadro .meta .izda {
+    float: left;
+}
+
+.cuadro .meta .dcha {
+    float: right;
+}
+
+.cuadro .meta a {
+    text-decoration: none;
+}
+
+.cuadro .entrada {
+    clear: both;
+    width: 580px;
+    padding: 10px 0px 10px 0px;
+}
+
+.cuadro .entrada th a:link {
+    color: #FFFFFF;
+}
+
+.cuadro .entrada th a:visited {
+    color: #FFFFFF;
+}
+
+.cuadro .entrada .desc {
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.links {
+    clear: both;
+    padding-bottom: 15px;
+}
+
+.links a {
+    width: 150px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    background: url('/modelo-base/images/tienda/img03.jpg') no-repeat left top;
+    border: none;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 5px 5px 5px 5px;
+}
+
+.editar_img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    background: url('/modelo-base/images/tienda/Pencil.png') no-repeat left top;
+    border: none;
+    text-decoration: none;
+    line-height: 45px;
+    padding: 5px 5px 5px 5px;    
+    display: inline;
+    float: left;
+}
+
+.eliminar_img {
+    width: 20px;
+    height: 20px;
+    margin-left: 50px;
+    margin-top: 10px;
+    background: url('/modelo-base/images/tienda/Trash.png') no-repeat left top;
+    border: none;
+    text-decoration: none;
+    line-height: 45px;
+    padding: 5px 5px 5px 5px;    
+    display: inline;
+}
+
+.principal {
+    position: relative;
+    top: -75px;
+    left: 30px;
+    margin-bottom: -35px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFFFFF;
+}
+
+/* ENTRADA PARTIDA PARA LOGIN */
+
+#partido .cuadro {
+    float: left;
+    width: 285px;
+    height: 350px;
+    padding-left: 20px;
+}
+
+#partido .cuadro .titulo {
+    width: 275px;
+}
+
+#partido .cuadro .entrada {
+    width: 280px;
+}
+
+#partido .cuadro .meta {
+    margin-right: -40px;
+    text-align: right;
+    text-transform: none;
+}
+
+#partido span.dcha{
+    color: #3C3C3C;
+}
+
+#partido .links a {
+    width: 75px;
+}
+/* ENTRADA PARTIDA PARA LOGIN  */
+
+/* ERROR LOGIN */
+#errorlogin {
+    margin-right: 5px;
+    color: #CD3788;
+    font-size: small;
+    font-weight: bold;
+    line-height: 15px;
+    width: 250px;
+}
+/* ERROR LOGIN */
+
+table.resumen{
+    border:none;
+}
+
+table.resumen tr {
+    width: 600px;
+}
+
+td.tit {
+    width: 250px;
+    font-style: italic;
+    vertical-align: top;
+}
+
+td.valor {
+    font-size: 14px;
+}
+
+table.tabla {
+    width: 570px;
+    border-collapse:collapse;
+}
+
+table.tabla, table.tabla th, table.tabla td
+{
+    border: 1px solid black;
+}
+
+table.tabla th, table.tabla th a:visited, table.tabla th a:link {
+    background-color: #5A1F4B;
+    color: #FFFFFF;
+}
+
+table.tabla tr, table.tabla tr a:visited, table.tabla tr a:link {
+    color: #000000;
+}
+    
+table.tabla tr.par {
+    background-color: #DCB1F0;
+}
+
+table.tabla tr.impar {
+    background-color: #FDFFB9;
+}
+
+table.tabla a.ir {
+    text-indent: -9999px;
+    background: url('/modelo-base/images/tienda/img12.jpg') no-repeat left;
+}
+
+.bloquefoto {
+    float: left;
+    margin-right: 20px; 
+    margin-bottom: 10px;
+}
+
+.bloquefoto a {
+    text-align: center;
+    display: block;
+}
+
+img.adminimg {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 150px;
+    height: auto;
+}
+
+#ruta {
+    font-weight: bold;
+    margin-left: -30px;    
+}
+
+#ruta a {
+    color: #77476B;
+}
+
+#ruta ul {
+    list-style-type: none;
+}
+
+#ruta li {
+    display: inline;
+}
+
+.centrado{
+    margin-left: 50%;
+    margin-right: 50%;
+}
+
+.menu {
+    padding-top: 10px;
+    width: 530px;
+}
+
+.menu .col {
+    float: left;
+    width: 230px;
+    overflow: hidden;
+    display: block;
+    margin-bottom: 40px;
+}
+
+.menu li .icono {
+    padding-top: 40px;
+    height: 60px;
+    display: block;
+    list-style: none;
+    text-align: center;
+}
+
+.menu li a {
+    padding: 50px 20px 40px 20px;
+}
+
+.menu li a.config {
+    background:#FFF url('/modelo-base/images/tienda/Tools.png') no-repeat 50% top;
+}
+
+.menu li a.productos {
+    background:#FFF url('/modelo-base/images/tienda/Gift.png') no-repeat 50% top;
+}
+
+.menu li a.usuarios {
+    background:#FFF url('/modelo-base/images/tienda/ID.png') no-repeat 50% top;
+}
+
+.menu li a.pedidos {
+    background:#FFF url('/modelo-base/images/tienda/Carton.png') no-repeat 50% top;
+}
+
+.menu li a.listanews {
+    background:#FFF url('/modelo-base/images/tienda/Mail.png') no-repeat 50% top;
+}
+
+.menu li a.estadisticas {
+    background:#FFF url('/modelo-base/images/tienda/Notepad.png') no-repeat 50% top;
+}
+
+.menu li a.user {
+    background: #FFF url('/modelo-base/images/tienda/User.png') no-repeat 50% top;
+}
+
+.menu li a.dirs {
+    background: #FFF url('/modelo-base/images/tienda/Mail.png') no-repeat 50% top;
+}
+/* DETALLE PRODUCTO */
+#detalleprod {
+    display: inline-block;
+}
+
+#detalleprod #imgprod {
+    float: left;
+    margin-right: 20px;
+    position: relative;
+}
+
+#detalleprod #imgprod .oculto {
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#detalleprod #imgprod img{
+    width: 250px;
+    height: 250px;
+    margin: 1px 1px 1px 1px;
+}
+
+#detalleprod #imgprod img:hover {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #CD3788;
+    margin: 0px 0px 0px 0px;
+}
+
+#detalleprod #cuadrodatos{
+    float: right;
+    width: 300px;
+}
+
+#datosprod {
+    margin-top: 50px;
+}
+
+#datosprod p{
+    line-height: 5px;
+}
+
+.resaltado {
+    background-color: #E1E1E1;
+    height: 75px;
+    width: 300px;
+}
+
+.resaltado #datos {
+    margin-left: 10px;
+}
+
+.resaltado #datos p{
+    margin-bottom: -10px;
+}
+
+.resaltado #precio p {
+    text-align: right;
+    font-size: 35px;
+    margin: -62px 10px 0 0;
+}
+
+.resaltado #formcarrito {
+    margin: -30px 0 55px 10px;
+}
+
+.resaltado #formcarrito form {
+    float: right;
+}
+
+.resaltado #formcarrito input {
+    margin-left: 5px;
+}
+
+.resaltado #formcarrito .cajatexto {
+    width: 25px;
+}
+
+.resaltado #formcarrito .nodisp {
+    font-size: 12px;
+    font-weight: bold;
+    color: #CD3788;
+}
+
+.compartir {
+    margin-top: 20px;
+    background-color: #E1E1E1;
+    height: 75px;
+    width: 300px;
+}
+
+.addthis_toolbox {
+    position: relative;
+    top:20px;
+    left: 30px;
+}
+
+#descprod {
+    position: relative;
+    display: inline-block;
+}
+
+#descprod .desc p {
+    line-height: 20px;
+    font-size: 14px;
+}
+
+/*SLIDER PORTADA*/
+
+.listaprods {
+    position: relative;
+    left: 30px;
+    margin-bottom: -150px;
+}
+
+.listaprods a {
+    color: #666666;
+    text-decoration: none;
+}
+
+.producto {
+    border: 1px;
+    border-color: #E1E1E1;
+    border-style: solid;
+    display: inline-block;
+    padding: 10px 10px 10px 10px;
+    height: 180px;
+    width: 130px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.producto:hover {
+    border-color: #CD3788;
+}
+
+.producto p {
+    margin-bottom: -10px;
+    padding-bottom: 14px;
+    line-height: 12px;
+}
+
+.producto .imgprod {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 80px;  
+    margin-bottom: 10px;
+}
+
+.producto img {
+    width: 80px;
+    height: 80px;    
+}
+
+.producto .textosprod {
+    margin-left: auto;
+    margin-right: auto;
+    width: 130px;
+    height: 70px;    
+    margin-bottom: -10px;
+}
+
+.producto .textosprod p {
+    text-align: left;
+}
+
+.producto .nombre{
+}
+
+.producto .descprod{
+}
+
+.producto .ref {
+    font-size: 9px;
+}
+
+#slider, #slider2, #slider3 {
+    margin-left: 10px;
+    width:580px;
+    height:250px;
+}	
+
+#slider ul, #slider li, #slider2 ul, #slider2 li, #slider3 ul, #slider3 li {
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#slider li, #slider2 li, #slider3 li { 
+    width:580px;
+    height:240px;
+    overflow:hidden; 
+}	
+	
+p#controls, p#controls2, p#controls3{
+    position: relative;
+    height: 100px;
+    width: 580px;
+}
+
+#prevBtn, #prevBtn2, #prevBtn3 { 	
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: -50px;
+    top: -150px;
+}	
+#nextBtn, #nextBtn2, #nextBtn3{ 
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left: 515px;
+    top: -150px;
+}														
+#prevBtn a, #prevBtn2 a, #prevBtn3 a {  
+    padding: 20px 20px 20px 20px;
+    margin-left: 5px;
+    background:url('/modelo-base/images/tienda/img15.jpg') no-repeat;	
+    overflow: hidden;
+}	
+#nextBtn a, #nextBtn2 a, #nextBtn3 a{ 	
+    padding: 20px 20px 20px 20px;
+    background:url('/modelo-base/images/tienda/img16.jpg') no-repeat;	
+    overflow: hidden;
+}	
+
+.slider{
+    margin-left: 40px;
+}		
+
+/*SLIDER LISTADO*/
+
+.listaprods_listado {
+    position: relative;
+    left: 20px;
+}
+
+.listaprods_listado a {
+    color: #666666;
+    text-decoration: none;
+}
+
+#slider_listado {
+    width:580px;
+}	
+
+#slider_listado .fila{
+    clear: both;
+    display: block;
+}
+
+#slider_listado ul, #slider_listado li {
+    margin:0;
+    padding:0;
+}
+#slider_listado li { 
+    list-style:none;
+    width:580px; 
+}
+
+#slider_listado .producto {
+    margin-right: 30px;
+}
+
+/* numeric controls */	
+
+ol#controls{
+    margin:1em 0 0 0;
+    padding:0;
+    height:28px;	
+}
+ol#controls li{
+    margin:0 10px 0 0; 
+    padding:0;
+    float:left;
+    list-style:none;
+    height:28px;
+    line-height:28px;
+}
+ol#controls li a{
+    float:left;
+    height:28px;
+    line-height:28px;
+    border:1px solid #ccc;
+    background:#E1E1E1;
+    color:#555;
+    padding:0 10px;
+    text-decoration:none;
+}
+ol#controls li.current a{
+    background:#CD3788;
+    color:#fff;
+}
+ol#controls li a:focus, #prevBtn a:focus, #nextBtn a:focus{outline:none;}
+
+/*CABECERA*/
+
+#cabecera {
+    position: relative;
+    top: 50px;
+    width: 950px;
+    height: 70px;
+    margin: 0px auto;
+}
+
+#cabecera a {
+    color: #FFFFFF;
+}
+
+#logo {
+    width: 950px;
+    height: 135px;
+    margin: 0 auto;
+    background: url('/modelo-base/images/tienda/img03.jpg') no-repeat left top;
+}
+
+#logo #titulo, #cabecera #logo p {
+    margin: 0px;
+    line-height: normal;
+    text-transform: lowercase;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+#logo p {
+    margin-top: -4px;
+    padding: 0px 0px 0px 145px;
+    text-transform: lowercase;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 13px;
+    color: #FFFFFF;
+} 
+
+#logo #titulo {
+    padding: 30px 0px 0px 140px;
+    letter-spacing: -1px;
+    font-size: 48px;
+}
+
+#logo a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+#cabecera #enlaces {
+    position: relative;
+    top: -200px;
+}
+
+#cabecera #enlaces ul {
+    margin: 0;
+    padding: 15px 0px 0px 0px;
+    list-style: none;
+    line-height: normal;
+}
+
+#cabecera #enlaces li {
+    display: block;
+    float: left;
+}
+
+#cabecera #enlaces a {
+    display: block;
+    float: left;
+    height: 28px;
+    background: #CD3788;
+    margin-right: 3px;
+    padding: 8px 30px 0px 35px;
+    letter-spacing: -1px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: lowercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+#cabecera #enlaces a:hover {
+    text-decoration: none;
+}
+
+#cabecera #enlaces .current_page_item {
+}
+
+#cabecera #enlaces .current_page_item a {
+}
+
+#cabecera #bienvenida {
+    position: relative;
+    top: -200px;
+    text-align: right;
+    color: #CD3788;
+    margin-bottom: -10px;
+}
+
+/*LATERAL*/
+
+#lateral{    
+    float: left;
+    width: 310px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#lateral p {
+    margin: -15px 0 20px 20px;
+    padding: 0px 10px;
+    line-height: 200%;
+}
+
+#lateral a {
+    text-align: left;
+    text-decoration: none;
+    font-weight: bold;
+    color: #666666;
+}
+
+#lateral a:hover {
+}
+
+#lateral h3 {
+    margin: 0px;
+    padding: 30px 0px 15px 30px;
+    background: url('/modelo-base/images/tienda/img08.jpg') no-repeat left top;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+    font-size: 24px;
+    font-weight: normal;
+    color: #CD3788;
+}
+
+#lateral ul {
+    margin: 0;
+    padding: 0;
+    background:  none;
+    list-style: none;
+    line-height: normal;
+}
+
+#lateral li {
+    background: url('/modelo-base/images/tienda/img09.jpg') repeat-y left top;
+    margin-bottom: 5px;
+}
+
+#lateral li ul {
+    margin: 0px 0px;
+    padding: 0px 0px 1px 0px;
+}
+
+#lateral li .cat {
+    margin: -20px 30px 20px 30px;
+    padding: 8px 0px 8px 10px;
+    border-bottom: 1px solid #E0E0E0;
+    background: url('/modelo-base/images/tienda/img12.jpg') no-repeat left;
+}
+
+#lateral li li span {
+}
+
+#lateral li li a {
+    font-weight: normal;
+}
+
+#lateral li li a:hover {
+    color: #CD3788;
+}
+
+.miniform {
+    margin-top: -25px;
+    padding: 5px 10px 0px 20px;
+}
+
+.miniform form {
+    margin: 0;
+    padding: 4px 0px 0 0;
+}
+
+.miniform fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.miniform input {
+    font: 12px Georgia, "Times New Roman", Times, serif;
+}
+
+.miniform-text {
+    border: 1px solid #66665E;
+    color: #66665E;
+    height: 20px;
+    margin-left: 10px;
+    padding: 2px 0 0 5px;
+    width: 150px;
+}
+
+.miniform-submit {
+    background: url('/modelo-base/images/tienda/img03.jpg') no-repeat scroll left top transparent;
+    border: medium none;
+    color: #FFFFFF;
+    height: 24px;
+    margin-left: 15px;
+    margin-top: -25px;
+    padding: 0 5px;
+    width: 82px;
+}
+
+#lateral #erroremail {
+    width: 255px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #CD3788;
+    line-height: 20px;
+}
+
+#minicarrito {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #E1E1E1;
+    width: 250px;
+    margin-left: 30px;
+    color: #3C3C3C;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#minicarrito th {
+    text-align: center;
+}
+
+#minicarrito th {
+    color: #FFFFFF;
+    background: #CD3788;
+}
+
+#minicarrito .dcha {
+    text-align: right;
+}
+
+#minicarrito tr.links {
+    border-style: none;
+}
+
+#btncarrito {
+}
+
+#btncarrito a {
+    color: #FFFFFF;
+    background-color: #CD3788;
+    padding: 5px 5px 5px 5px;
+    margin-left: 30px;
+}
+
+/*PIE*/
+
+#pie {
+    clear: both;
+    width: 920px;
+    height: 100px;
+    margin: 10px auto;
+    padding: 0;
+}
+
+#pie .bloque {
+    float: left;
+    margin-left: 70px;
+}
+
+#pie li {
+    color: #FFFFFF;
+    list-style: none;
+    margin-left: -20px;
+}
+
+#pie h3 {
+    color: #FFFFFF;
+    margin-left: 20px;
+}
+
+#pie #copy {
+    clear: both;
+}
+
+#pie #copy p{
+    color: #FFFFFF;
+    margin: 0;
+    padding: 30px 0px 0px 0px;
+    text-align: center;
+    line-height: normal;
+    font-size: 11px;
+}
+
+/* TABLAS JMESA */
+.jmesa .header td {
+    background-color: #CD3788;
+}
