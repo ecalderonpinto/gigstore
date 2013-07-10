@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="modeloUP" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>categoria.Categoria</class>
+    <class>categoria.CategoriaDescripcion</class>
+    <class>direccion.Direccion</class>
+    <class>dominio.ConfiguracionTienda</class>
+    <class>dominio.Imagen</class>
+    <class>dominio.TextosTienda</class>
+    <class>dominio.TipoIVA</class>
+    <class>pedido.CosteEnvio</class>
+    <class>pedido.CosteGestion</class>
+    <class>pedido.Pedido</class>
+    <class>pedido.PedidoEstado</class>
+    <class>pedido.PedidoLinea</class>
+    <class>producto.Producto</class>
+    <class>producto.ProductoDescripcion</class>
+    <class>producto.ProductoEstado</class>
+    <class>producto.ProductoOpcion</class>
+    <class>usuario.Usuario</class>
+    <class>usuario.UsuarioEstado</class>
+    <class>listacorreo.ListaCorreo</class>
+    <class>acceso.Acceso</class>
+    <class>dominio.BannersTienda</class>
+    <class>dominio.TextosSeccionesTienda</class>
+    <class>opcion.Opcion</class>
+    <class>opcion.Valor</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="false"/>
+      <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+      <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/brillantetes_gigStore_dbo"/>
+      <property name="hibernate.connection.username" value="gigAdmin"/>
+      <property name="hibernate.connection.password" value="fTqVeSRz6vRtLE5N"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect"/>
+      <property name="hibernate.connection.provider_class" value="org.hibernate.connection.C3P0ConnectionProvider"/>
+      <property name="hibernate.c3p0.max_size" value="100"/>
+      <property name="hibernate.c3p0.min_size" value="0"/>
+      <property name="hibernate.c3p0.acquire_increment" value="1"/>
+      <property name="hibernate.c3p0.idle_test_period" value="300"/>
+      <property name="hibernate.c3p0.max_statements" value="0"/>
+      <property name="hibernate.c3p0.timeout" value="100"/>
+    </properties>
+  </persistence-unit>
+</persistence>
