@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+
+<!--
+
+    Configuration file for UrlRewriteFilter
+    http://www.tuckey.org/urlrewrite/
+
+-->
+<urlrewrite>
+<!--   
+    <rule>
+        <note>
+            The rule means that requests to /test/status/ will be redirected to /rewrite-status
+            the url will be rewritten.
+        </note>
+        <from>/test/status/</from>
+        <to type="redirect">%{context-path}/rewrite-status</to>
+    </rule>
+
+
+    <outbound-rule>
+        <note>
+            The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
+            the url /rewrite-status will be rewritten to /test/status/.
+
+            The above rule and this outbound-rule means that end users should never see the
+            url /rewrite-status only /test/status/ both in thier location bar and in hyperlinks
+            in your pages.
+        </note>
+        <from>%{context-path}/rewrite-status</from>
+        <to>/test/status/</to>
+    </outbound-rule>
+ 
+    <rule>
+        <condition type="scheme" operator="notequal">https</condition>
+        <condition name="host" operator="equal">abc.def.com</condition>
+        <from>^/(.*)</from>
+        <to type="permanent-redirect" last="true">https://abc.def.com/ghi/$1</to>
+    </rule>
+-->
+    <rule>
+        <from>^/$</from>
+        <to>/inicio.do</to>
+    </rule>
+
+    <rule>
+        <from>/info/contactar/$</from>
+        <to>/usuario/contactar.do?metodo=contactar_inicio</to>
+    </rule>
+
+    <rule>
+        <from>/info/(.*)/$</from>
+        <to>/info/$1.do</to>
+    </rule>
+
+    <rule>
+        <from>/usuario/acceder/$</from>
+        <to>/usuario/acceder.do?metodo=acceso_inicio</to>
+    </rule>
+
+    <rule>
+        <from>/usuario/alta/$</from>
+        <to>/usuario/editar.do?metodo=alta_inicio</to>
+    </rule>
+
+    <rule>
+        <from>/usuario/recordatorio/$</from>
+        <to>/usuario/recordatorio/form.do?metodo=mostrar_recordatorio</to>
+    </rule>
+
+    <rule>
+        <from>/usuario/recordatorio/enviar/$</from>
+        <to>/usuario/recordatorio/enviar.do</to>
+    </rule>
+
+    <rule>
+        <from>/usuario/datos-personales/$</from>
+        <to>/usuario/gestion.do?metodo=mostrar_detalle</to>
+    </rule>
+
+    <rule>
+        <from>/usuario/datos-personales/editar/$</from>
+        <to>/usuario/editar.do?metodo=editar_inicio</to>
+    </rule>
+
+    <rule>
+        <from>/usuario/datos-personales/direcciones/alta/$</from>
+        <to>/usuario/direcciones/editar.do?metodo=alta_inicio</to>
+    </rule>
+
+    <rule>
+        <from>/usuario/datos-personales/direcciones/editar/([0-9]+)/$</from>
+        <to>/usuario/direcciones/editar.do?metodo=editar_inicio&amp;id=$1</to>
+    </rule>
+
+    <rule>
+        <from>/usuario/datos-personales/pedidos/ver-detalles/([0-9]+)/$</from>
+        <to>/usuario/pedidos.do?metodo=mostrar_pedido&amp;id=$1</to>
+    </rule>
+
+    <rule>
+        <from>/administrar/$</from>
+        <to>/administrar/menu.do?metodo=menu</to>
+    </rule>
+
+    <rule>
+        <from>/buscar/$</from>
+        <to>/productos/buscar.do?metodo=buscar&amp;accion=buscar</to>
+    </rule>
+
+    <rule>
+        <from>/buscar/(.*)/$</from>
+        <to>/productos/buscar.do?metodo=mostrar_listado&amp;accion=buscar</to>
+    </rule>
+
+    <rule>
+        <from>/recomendaciones/(.*)/$</from>
+        <to>/productos/destacados.do?metodo=mostrar_listado&amp;accion=$1</to>
+    </rule>
+
+    <rule>
+        <from>/categorias/$</from>
+        <to>/productos/categorias.do?metodo=mostrar_listado&amp;accion=listacats</to>
+    </rule>
+
+    <rule>
+        <from>/categorias/([0-9]+)-.*/$</from>
+        <to>/productos/categorias.do?metodo=mostrar_listado&amp;accion=categorias&amp;categoria=$1</to>
+    </rule>
+
+    <rule>
+        <from>/categorias/.*/([0-9]+)-(.*)/$</from>
+        <to>/productos/detalle.do?metodo=mostrar_detalle&amp;id=$1</to>
+    </rule>
+
+    <rule>
+        <from>/pedido/carro-de-la-compra/$</from>
+        <to>/pedido/detalle.do?metodo=mostrar_detalle</to>
+    </rule>
+
+    <rule>
+        <from>/pedido/confirmar/paso-1/$</from>
+        <to>/pedido/confirmar/paso1.do?metodo=confirmar_inicio</to>
+    </rule>
+
+    <rule>
+        <from>/pedido/confirmar/paso-2/$</from>
+        <to>/pedido/confirmar/paso2.do?metodo=configurar_pedido</to>
+    </rule>
+
+    <rule>
+        <from>/pedido/confirmar/paso-3/$</from>
+        <to>/pedido/confirmar/paso3.do?metodo=confirmar_pedido</to>
+    </rule>
+    
+    <!--
+
+    INSTALLATION
+
+        in your web.xml add...
+
+        <filter>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+            <init-param>
+                <param-name>logLevel</param-name>
+                <param-value>WARN</param-value>
+            </init-param>
+        </filter>
+        <filter-mapping>
+            <filter-name>UrlRewriteFilter</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
+     EXAMPLES
+
+     Redirect one url
+        <rule>
+            <from>/some/old/page.html</from>
+            <to type="redirect">/very/new/page.html</to>
+        </rule>
+
+    Redirect a directory
+        <rule>
+            <from>/some/olddir/(.*)</from>
+            <to type="redirect">/very/newdir/$1</to>
+        </rule>
+
+    Clean a url
+        <rule>
+            <from>/products/([0-9]+)</from>
+            <to>/products/index.jsp?product_id=$1</to>
+        </rule>
+    eg, /products/1234 will be passed on to /products/index.jsp?product_id=1234 without the user noticing.
+
+    Browser detection
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <from>/some/page.html</from>
+            <to>/some/page-for-old-browsers.html</to>
+        </rule>
+    eg, will pass the request for /some/page.html on to /some/page-for-old-browsers.html only for older
+    browsers whose user agent srtings match Mozilla/1, Mozilla/2, Mozilla/3 or Mozilla/4.
+
+    Centralised browser detection
+        <rule>
+            <condition name="user-agent">Mozilla/[1-4]</condition>
+            <set type="request" name="browser">moz</set>
+        </rule>
+    eg, all requests will be checked against the condition and if matched
+    request.setAttribute("browser", "moz") will be called.
+
+    -->
+
+</urlrewrite>
+

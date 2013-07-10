@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="administrarFormaPagoForm" type="administrar.AdministrarFormaPagoForm"/>
+        <form-bean name="productoOpcionCombinacionesForm" type="producto.ProductoOpcionCombinacionesForm"/>
+        <form-bean name="opcionForm" type="opcion.OpcionForm" />
+        <form-bean name="valorForm" type="opcion.ValorForm" />
+        <form-bean name="productoOpcionForm" type="producto.ProductoOpcionForm"/>
+        <form-bean name="administrarPedidoLineaForm" type="administrar.AdministrarPedidoLineaForm"/>
+        <form-bean name="administrarPedidoForm" type="administrar.AdministrarPedidoForm"/>
+        <form-bean name="costeEnvioForm" type="pedido.CosteEnvioForm"/>
+        <form-bean name="listaCorreoForm" type="listacorreo.ListaCorreoForm"/>
+        <form-bean name="pedidoForm" type="pedido.PedidoForm"/>
+        <form-bean name="pedidoEstadoForm" type="pedido.PedidoEstadoForm"/>
+        <form-bean name="administrarTextosTiendaForm" type="administrar.AdministrarTextosTiendaForm"/>
+        <form-bean name="productoDescripcionForm" type="producto.ProductoDescripcionForm"/>
+        <form-bean name="categoriaDescripcionForm" type="categoria.CategoriaDescripcionForm"/>
+        <form-bean name="imagenForm" type="dominio.ImagenForm"/>
+        <form-bean name="administrarTiendaForm" type="administrar.AdministrarTiendaForm"/>
+        <form-bean name="productoEstadoForm" type="producto.ProductoEstadoForm"/>
+        <form-bean name="productoForm" type="producto.ProductoForm"/>
+        <form-bean name="tipoIvaForm" type="dominio.TipoIvaForm"/>
+        <form-bean name="categoriaForm" type="categoria.CategoriaForm"/>
+        <form-bean name="usuarioEstadoForm" type="usuario.UsuarioEstadoForm"/>
+        <form-bean name="direccionForm" type="direccion.DireccionForm"/>
+        <form-bean name="administrarUsuarioForm" type="administrar.AdministrarUsuariosForm"/>
+        <form-bean name="usuarioForm" type="usuario.UsuarioForm" />        
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+    </global-forwards>
+
+    <action-mappings>
+        <action path="/usuario/acceder" type="usuario.UsuarioAction" parameter="metodo">
+            <forward name="success" path="/jsp/usuarios/usr_login.jsp"/>
+        </action>  
+        <action path="/usuario/login" type="usuario.UsuarioAction" parameter="metodo">
+            <forward name="fail"  path="/jsp/usuarios/usr_login.jsp"/>
+        </action>
+        <action path="/usuario/recordatorio/form" type="usuario.UsuarioAction" parameter="metodo">
+            <forward name="success" path="/jsp/usuarios/usr_recordarpass.jsp"/>
+        </action>  
+        <action path="/usuario/recordatorio/enviar" type="usuario.UsuarioAction" parameter="metodo">
+            <forward name="success" path="/jsp/usuarios/usr_login.jsp"/>
+            <forward name="fail"  path="/jsp/usuarios/usr_recordarpass.jsp"/>
+        </action>  
+        <action path="/usuario/gestion" type="usuario.UsuarioAction" parameter="metodo">
+            <forward name="success" path="/jsp/usuarios/usr_gestion.jsp"/>
+        </action>  
+        <action path="/usuario/editar" type="usuario.UsuarioAction" 
+            parameter="metodo"
+            name="usuarioForm"
+            scope="request" 
+            validate="false" >
+            <forward name="success" path="/jsp/usuarios/usr_form.jsp"/>
+        </action>
+        <action path="/usuario/alta" type="usuario.UsuarioAction" 
+            parameter="metodo"
+            name="usuarioForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/usuarios/usr_form.jsp" >
+            <forward name="fail" path="/usuario/acceder.do?metodo=acceso_inicio" redirect="true"/>
+            <forward name="success" path="/usuario/datos-personales/" redirect="true"/>
+        </action>   
+        <action path="/usuario/direcciones/editar" type="usuario.UsuarioDireccionAction" 
+            parameter="metodo"
+            name="direccionForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/usuarios/usr_dir_form.jsp"/>
+        </action>
+        <action path="/usuario/direcciones/alta" type="usuario.UsuarioDireccionAction" 
+            parameter="metodo"
+            name="direccionForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/usuarios/usr_dir_form.jsp" >
+            <forward name="success" path="/usuario/datos-personales/" redirect="true"/>
+        </action>
+        <action path="/usuario/direcciones/eliminar" type="usuario.UsuarioDireccionAction" parameter="metodo">
+            <forward name="success" path="/usuario/datos-personales/" redirect="true"/>
+        </action>  
+        <action path="/usuario/pedidos" type="usuario.UsuarioAction" parameter="metodo">
+            <forward name="success" path="/jsp/usuarios/usr_ped_det.jsp"/>
+        </action>  
+        <action path="/usuario/seguimiento/agregar" type="usuario.UsuarioAction" parameter="metodo">
+            <forward name="success" path="/jsp/productos/prod_detalle.jsp"/>
+        </action>   
+        <action path="/usuario/seguimiento/eliminar" type="usuario.UsuarioAction" parameter="metodo">
+            <forward name="success" path="/jsp/productos/prod_detalle.jsp"/>
+        </action>   
+        <action path="/usuario/contactar" type="usuario.UsuarioAction" parameter="metodo">            
+            <forward name="success"  path="/jsp/info/contactar.jsp" />
+        </action>
+        <action path="/usuario/contactar/enviar" type="usuario.UsuarioAction" parameter="metodo">            
+            <forward name="success"  path="/info/contactar/" redirect="true"/>
+        </action>
+        <action path="/usuario/salir" type="usuario.UsuarioAction" parameter="metodo">            
+            <forward name="success"  path="/" redirect="true"/>
+        </action>
+        
+        <action path="/administrar/menu" type="administrar.AdministrarTiendaAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_menu.jsp"/>
+        </action>
+        
+        <action path="/administrar/tienda" type="administrar.AdministrarTiendaAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_tienda.jsp"/>
+        </action>
+        <action path="/administrar/tienda/configuracion/editar" type="administrar.AdministrarTiendaAction" 
+            parameter="metodo"
+            name="administrarTiendaForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_tienda_form.jsp"/>
+        </action>
+        <action path="/administrar/tienda/configuracion/alta" type="administrar.AdministrarTiendaAction" 
+            parameter="metodo"
+            name="administrarTiendaForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_tienda_form.jsp" >
+            <forward name="success" path="/administrar/tienda.do?metodo=mostrar_listado" redirect="true"/>
+        </action>
+        
+        <action path="/administrar/tienda/textos" type="administrar.AdministrarTextosTiendaAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_txt_tienda_listado.jsp"/>
+        </action>
+        <action path="/administrar/tienda/textos/editar" type="administrar.AdministrarTextosTiendaAction" 
+            parameter="metodo"
+            name="administrarTextosTiendaForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_txt_tienda_form.jsp"/>
+        </action>
+        <action path="/administrar/tienda/textos/alta" type="administrar.AdministrarTextosTiendaAction" 
+            parameter="metodo"
+            name="administrarTextosTiendaForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_txt_tienda_form.jsp" >
+            <forward name="success" path="/administrar/tienda/textos.do?metodo=mostrar_listado" redirect="true"/>
+        </action>
+        <action path="/administrar/tienda/textos/eliminar" type="administrar.AdministrarTextosTiendaAction" parameter="metodo">
+            <forward name="success" path="/administrar/tienda/textos.do?metodo=mostrar_listado" redirect="true"/>
+        </action> 
+        
+        <action path="/administrar/tienda/formapago" type="administrar.AdministrarFormaPagoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_tienda_formapago.jsp"/>
+        </action>
+        <action path="/administrar/tienda/formapago/editar" type="administrar.AdministrarFormaPagoAction" 
+            parameter="metodo"
+            name="administrarFormaPagoForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_tienda_formapago_form.jsp"/>
+        </action>
+        <action path="/administrar/tienda/formapago/alta" type="administrar.AdministrarFormaPagoAction" 
+            parameter="metodo"
+            name="administrarFormaPagoForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_tienda_formapago_form.jsp" >
+            <forward name="success" path="/administrar/tienda/formapago.do?metodo=mostrar_listado" redirect="true"/>
+        </action>
+        
+        <action path="/administrar/tienda/tiposiva" type="administrar.AdministrarTiposIvaAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_tienda_iva_listado.jsp"/>
+        </action>
+        <action path="/administrar/tienda/tiposiva/editar" type="administrar.AdministrarTiposIvaAction" 
+            parameter="metodo"
+            name="tipoIvaForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_tienda_iva_form.jsp"/>
+        </action>
+        <action path="/administrar/tienda/tiposiva/alta" type="administrar.AdministrarTiposIvaAction" 
+            parameter="metodo"
+            name="tipoIvaForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_tienda_iva_form.jsp" >
+            <forward name="success" path="/administrar/tienda/tiposiva.do?metodo=mostrar_listado" redirect="true"/>
+        </action>
+        <action path="/administrar/tienda/tiposiva/eliminar" type="administrar.AdministrarTiposIvaAction" parameter="metodo">
+            <forward name="success" path="/administrar/tienda/tiposiva.do?metodo=mostrar_listado" redirect="true"/>
+        </action> 
+        
+        <action path="/administrar/usuarios" type="administrar.AdministrarUsuariosAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_usr_lista.jsp"/>
+        </action>
+        <action path="/administrar/usuarios/detalle" type="administrar.AdministrarUsuariosAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_usr_det.jsp"/>
+        </action>
+        <action path="/administrar/usuarios/editar" type="administrar.AdministrarUsuariosAction"
+            parameter="metodo"
+            name="administrarUsuarioForm"
+            scope="request" 
+            validate="false" >
+            <forward name="success"  path="/jsp/administrar/admin_usr_form.jsp"/>
+        </action>
+        <action path="/administrar/usuarios/modificar" type="administrar.AdministrarUsuariosAction"
+            parameter="metodo"
+            name="administrarUsuarioForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_usr_form.jsp" >
+            <forward name="success"  path="/jsp/administrar/admin_usr_det.jsp"/>
+        </action>    
+        <action path="/administrar/usuarios/direcciones/editar" type="administrar.AdministrarDireccionAction" 
+            parameter="metodo"
+            name="direccionForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_usr_dir_form.jsp"/>
+        </action>
+        <action path="/administrar/usuarios/direcciones/alta" type="administrar.AdministrarDireccionAction" 
+            parameter="metodo"
+            name="direccionForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_usr_dir_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_usr_det.jsp" />
+        </action>
+        <action path="/administrar/usuarios/direcciones/eliminar" type="administrar.AdministrarDireccionAction" parameter="metodo">
+            <forward name="success" path="/jsp/administrar/admin_usr_det.jsp"/>
+        </action> 
+        <action path="/administrar/usuarios/estados" type="administrar.AdministrarUsuariosEstadosAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_usr_estado_lista.jsp"/>
+        </action>
+        <action path="/administrar/usuarios/estados/editar" type="administrar.AdministrarUsuariosEstadosAction" 
+            parameter="metodo"
+            name="usuarioEstadoForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_usr_estado_form.jsp"/>
+        </action>
+        <action path="/administrar/usuarios/estados/alta" type="administrar.AdministrarUsuariosEstadosAction" 
+            parameter="metodo"
+            name="usuarioEstadoForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_usr_estado_form.jsp" >
+            <forward name="success" path="/administrar/usuarios/estados.do?metodo=mostrar_listado" redirect="true"/>
+        </action>
+        <action path="/administrar/usuarios/estados/eliminar" type="administrar.AdministrarUsuariosEstadosAction" parameter="metodo">
+            <forward name="success" path="/administrar/usuarios/estados.do?metodo=mostrar_listado" redirect="true"/>
+        </action> 
+        
+        <action path="/administrar/productos" type="administrar.AdministrarProductosAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_prod_lista.jsp"/>
+        </action>
+        <action path="/administrar/productos/detalle" type="administrar.AdministrarProductosAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_prod_det.jsp"/>
+        </action>
+        <action path="/administrar/productos/editar" type="administrar.AdministrarProductosAction" 
+            parameter="metodo"
+            name="productoForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_prod_form.jsp"/>
+        </action>
+        <action path="/administrar/productos/alta" type="administrar.AdministrarProductosAction" 
+            parameter="metodo"
+            name="productoForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_prod_form.jsp" >
+            <forward name="cancel" path="/administrar/productos.do?metodo=mostrar_listado" redirect="true"/>
+            <forward name="success" path="/jsp/administrar/admin_prod_det.jsp"/>
+        </action>
+        <action path="/administrar/productos/eliminar" type="administrar.AdministrarProductosAction" parameter="metodo">
+            <forward name="success" path="/administrar/productos.do?metodo=mostrar_listado" redirect="true"/>
+        </action>  
+        <action path="/administrar/productos/descripciones/editar" type="administrar.AdministrarProductosDescripcionAction" 
+            parameter="metodo"
+            name="productoDescripcionForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_prod_desc_form.jsp"/>
+        </action>
+        <action path="/administrar/productos/descripciones/alta" type="administrar.AdministrarProductosDescripcionAction" 
+            parameter="metodo"
+            name="productoDescripcionForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_prod_desc_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_prod_det.jsp"/>
+        </action> 
+        <action path="/administrar/productos/descripciones/eliminar" type="administrar.AdministrarProductosDescripcionAction" parameter="metodo">
+            <forward name="success" path="/jsp/administrar/admin_prod_det.jsp"/>
+        </action>  
+        <action path="/administrar/productos/opciones/combinar/editar" type="administrar.AdministrarProductosOpcionesAction" 
+            parameter="metodo"
+            name="productoOpcionCombinacionesForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_prod_opt_combinar_form.jsp"/>
+        </action>
+        <action path="/administrar/productos/opciones/combinar/alta" type="administrar.AdministrarProductosOpcionesAction" 
+            parameter="metodo"
+            name="productoOpcionCombinacionesForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_prod_opt_combinar_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_prod_det.jsp"/>
+        </action> 
+        <action path="/administrar/productos/opciones/editar" type="administrar.AdministrarProductosOpcionesAction" 
+            parameter="metodo"
+            name="productoOpcionForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_prod_opt_form.jsp"/>
+        </action>
+        <action path="/administrar/productos/opciones/alta" type="administrar.AdministrarProductosOpcionesAction" 
+            parameter="metodo"
+            name="productoOpcionForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_prod_opt_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_prod_det.jsp"/>
+        </action> 
+        <action path="/administrar/productos/opciones/eliminar" type="administrar.AdministrarProductosOpcionesAction" parameter="metodo">
+            <forward name="success" path="/jsp/administrar/admin_prod_det.jsp"/>
+        </action>   
+        <action path="/administrar/productos/categorias" type="administrar.AdministrarCategoriasAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_prod_cat_lista.jsp"/>
+        </action>
+        <action path="/administrar/productos/categorias/detalle" type="administrar.AdministrarCategoriasAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_prod_cat_det.jsp"/>
+        </action>
+        <action path="/administrar/productos/categorias/editar" type="administrar.AdministrarCategoriasAction" 
+            parameter="metodo"
+            name="categoriaForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_prod_cat_form.jsp"/>
+        </action>
+        <action path="/administrar/productos/categorias/alta" type="administrar.AdministrarCategoriasAction" 
+            parameter="metodo"
+            name="categoriaForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_prod_cat_form.jsp" >
+            <forward name="cancel" path="/administrar/productos/categorias.do?metodo=mostrar_listado" redirect="true"/>
+            <forward name="success" path="/jsp/administrar/admin_prod_cat_det.jsp"/>
+        </action> 
+        <action path="/administrar/productos/categorias/eliminar" type="administrar.AdministrarCategoriasAction" parameter="metodo">
+            <forward name="success" path="/administrar/productos/categorias.do?metodo=mostrar_listado" redirect="true"/>
+        </action>
+        <action path="/administrar/productos/categorias/descripciones/editar" type="administrar.AdministrarCategoriasDescripcionAction" 
+            parameter="metodo"
+            name="categoriaDescripcionForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_prod_cat_desc_form.jsp"/>
+        </action>
+        <action path="/administrar/productos/categorias/descripciones/alta" type="administrar.AdministrarCategoriasDescripcionAction" 
+            parameter="metodo"
+            name="categoriaDescripcionForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_prod_cat_desc_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_prod_cat_det.jsp"/>
+        </action> 
+        <action path="/administrar/productos/categorias/descripciones/eliminar" type="administrar.AdministrarCategoriasDescripcionAction" parameter="metodo">
+            <forward name="success" path="/jsp/administrar/admin_prod_cat_det.jsp"/>
+        </action>
+        <action path="/administrar/productos/estados" type="administrar.AdministrarProductosEstadosAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_prod_estado_lista.jsp"/>
+        </action>
+        <action path="/administrar/productos/estados/editar" type="administrar.AdministrarProductosEstadosAction" 
+            parameter="metodo"
+            name="productoEstadoForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_prod_estado_form.jsp"/>
+        </action>
+        <action path="/administrar/productos/estados/alta" type="administrar.AdministrarProductosEstadosAction" 
+            parameter="metodo"
+            name="productoEstadoForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_prod_estado_form.jsp" >
+            <forward name="success" path="/administrar/productos/estados.do?metodo=mostrar_listado" redirect="true"/>
+        </action>
+        <action path="/administrar/productos/estados/eliminar" type="administrar.AdministrarProductosEstadosAction" parameter="metodo">
+            <forward name="success" path="/administrar/productos/estados.do?metodo=mostrar_listado" redirect="true"/>
+        </action>  
+        <action path="/administrar/productos/imagenes/editar" type="administrar.AdministrarImagenesAction" 
+            parameter="metodo"
+            name="imagenForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_prod_img_form.jsp"/>
+        </action>
+        <action path="/administrar/productos/imagenes/alta" type="administrar.AdministrarImagenesAction" 
+            parameter="metodo"
+            name="imagenForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_prod_img_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_prod_det.jsp"/>
+        </action>
+        <action path="/administrar/productos/imagenes/eliminar" type="administrar.AdministrarImagenesAction" parameter="metodo">
+            <forward name="success" path="/jsp/administrar/admin_prod_det.jsp"/>
+        </action>     
+        <action path="/administrar/productos/categorias/imagenes/editar" type="administrar.AdministrarImagenesAction" 
+            parameter="metodo"
+            name="imagenForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_prod_img_form.jsp"/>
+        </action>
+        <action path="/administrar/productos/categorias/imagenes/alta" type="administrar.AdministrarImagenesAction" 
+            parameter="metodo"
+            name="imagenForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_prod_img_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_prod_cat_det.jsp"/>
+        </action>
+        <action path="/administrar/productos/categorias/imagenes/eliminar" type="administrar.AdministrarImagenesAction" parameter="metodo">
+            <forward name="success" path="/jsp/administrar/admin_prod_cat_det.jsp"/>
+        </action>   
+                
+        <action path="/administrar/opciones" type="administrar.AdministrarOpcionesAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_opt_lista.jsp"/>
+        </action>
+        <action path="/administrar/opciones/detalle" type="administrar.AdministrarOpcionesAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_opt_det.jsp"/>
+        </action>
+        <action path="/administrar/opciones/editar" type="administrar.AdministrarOpcionesAction" 
+            parameter="metodo"
+            name="opcionForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_opt_form.jsp"/>
+        </action>
+        <action path="/administrar/opciones/alta" type="administrar.AdministrarOpcionesAction" 
+            parameter="metodo"
+            name="opcionForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_opt_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_opt_det.jsp"/>
+        </action> 
+        <action path="/administrar/opciones/eliminar" type="administrar.AdministrarOpcionesAction" parameter="metodo">
+            <forward name="success" path="/administrar/opciones.do?metodo=mostrar_listado" redirect="true"/>
+        </action>
+        <action path="/administrar/opciones/valores/editar" type="administrar.AdministrarOpcionesValorAction" 
+            parameter="metodo"
+            name="valorForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_opt_valor_form.jsp"/>
+        </action>
+        <action path="/administrar/opciones/valores/alta" type="administrar.AdministrarOpcionesValorAction" 
+            parameter="metodo"
+            name="valorForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_opt_valor_form.jsp" >
+            <forward name="cancel" path="/administrar/opciones/valores.do?metodo=mostrar_listado" redirect="true"/>
+            <forward name="success" path="/jsp/administrar/admin_opt_det.jsp"/>
+        </action> 
+        <action path="/administrar/opciones/valores/eliminar" type="administrar.AdministrarOpcionesValorAction" parameter="metodo">
+            <forward name="success" path="/administrar/opciones.do?metodo=mostrar_listado" redirect="true"/>
+        </action>
+        
+        <action path="/administrar/pedidos" type="administrar.AdministrarPedidosAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_ped_lista.jsp"/>
+        </action>         
+        <action path="/administrar/pedidos/detalle" type="administrar.AdministrarPedidosAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_ped_det.jsp"/>
+        </action>
+        <action path="/administrar/pedidos/editar" type="administrar.AdministrarPedidosAction" 
+            parameter="metodo"
+            name="administrarPedidoForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_ped_form.jsp"/>
+        </action>
+        <action path="/administrar/pedidos/alta" type="administrar.AdministrarPedidosAction" 
+            parameter="metodo"
+            name="administrarPedidoForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_ped_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_ped_det.jsp"/>
+        </action>
+        <action path="/administrar/pedidos/lineas/editar" type="administrar.AdministrarPedidosLineasAction" 
+            parameter="metodo"
+            name="administrarPedidoLineaForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_ped_lin_form.jsp"/>
+        </action>
+        <action path="/administrar/pedidos/lienas/alta" type="administrar.AdministrarPedidosLineasAction" 
+            parameter="metodo"
+            name="administrarPedidoLineaForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_ped_lin_form.jsp" >
+            <forward name="success" path="/jsp/administrar/admin_ped_det.jsp"/>
+        </action>
+        <action path="/administrar/pedidos/lineas/eliminar" type="administrar.AdministrarPedidosLineasAction" parameter="metodo">
+            <forward name="success" path="/administrar/listacorreo.do?metodo=mostrar_listado" redirect="true" />
+        </action> 
+        <action path="/administrar/pedidos/estados" type="administrar.AdministrarPedidosEstadosAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_ped_estado_lista.jsp"/>
+        </action>  
+        <action path="/administrar/pedidos/estados/editar" type="administrar.AdministrarPedidosEstadosAction" 
+            parameter="metodo"
+            name="pedidoEstadoForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_ped_estado_form.jsp"/>
+        </action>
+        <action path="/administrar/pedidos/estados/alta" type="administrar.AdministrarPedidosEstadosAction" 
+            parameter="metodo"
+            name="pedidoEstadoForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_ped_estado_form.jsp" >
+            <forward name="success" path="/administrar/pedidos/estados.do?metodo=mostrar_listado" redirect="true" />
+        </action>
+        <action path="/administrar/pedidos/estados/eliminar" type="administrar.AdministrarPedidosEstadosAction" parameter="metodo">
+            <forward name="success" path="/administrar/pedidos/estados.do?metodo=mostrar_listado" redirect="true" />
+        </action> 
+        <action path="/administrar/pedidos/costeenvio" type="administrar.AdministrarCosteEnvioAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_ped_cenv_lista.jsp"/>
+        </action>  
+        <action path="/administrar/pedidos/costeenvio/editar" type="administrar.AdministrarCosteEnvioAction"
+            parameter="metodo"
+            name="costeEnvioForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_ped_cenv_form.jsp"/>
+        </action>
+        <action path="/administrar/pedidos/costeenvio/alta" type="administrar.AdministrarCosteEnvioAction" 
+            parameter="metodo"
+            name="costeEnvioForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_ped_cenv_form.jsp" >
+            <forward name="success" path="/administrar/pedidos/costeenvio.do?metodo=mostrar_listado" redirect="true" />
+        </action>
+        <action path="/administrar/pedidos/costeenvio/eliminar" type="administrar.AdministrarCosteEnvioAction" parameter="metodo">
+            <forward name="success" path="/administrar/pedidos/costeenvio.do?metodo=mostrar_listado" redirect="true" />
+        </action> 
+        
+        <action path="/administrar/listacorreo" type="listacorreo.ListaCorreoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_news_lista.jsp"/>
+        </action> 
+        <action path="/administrar/listacorreo/agregar" type="listacorreo.ListaCorreoAction" parameter="metodo" />
+        <action path="/administrar/listacorreo/editar" type="listacorreo.ListaCorreoAction" 
+            parameter="metodo"
+            name="listaCorreoForm"
+            scope="request" 
+            validate="false">
+            <forward name="success" path="/jsp/administrar/admin_news_form.jsp"/>
+        </action>
+        <action path="/administrar/listacorreo/alta" type="listacorreo.ListaCorreoAction" 
+            parameter="metodo"
+            name="listaCorreoForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/administrar/admin_news_form.jsp" >
+            <forward name="success" path="/administrar/listacorreo.do?metodo=mostrar_listado" redirect="true" />
+        </action>
+        <action path="/administrar/listacorreo/generar_boletin" type="listacorreo.ListaCorreoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/administrar/admin_news_email_form.jsp"/>
+        </action> 
+        <action path="/administrar/listacorreo/enviar_boletin" type="listacorreo.ListaCorreoAction" parameter="metodo">
+            <forward name="success"  path="/administrar/listacorreo.do?metodo=mostrar_listado"/>
+        </action> 
+        <action path="/administrar/listacorreo/eliminar" type="listacorreo.ListaCorreoAction" parameter="metodo">
+            <forward name="success" path="/administrar/listacorreo.do?metodo=mostrar_listado" redirect="true" />
+        </action> 
+                
+        <action path="/administrar/estadisticas" type="acceso.AccesosAction" parameter="metodo">
+            <forward name="success" path="/jsp/administrar/admin_est_listado.jsp" />
+        </action> 
+        <action path="/administrar/estadisticas/detalle" type="acceso.AccesosAction" parameter="metodo">
+            <forward name="success" path="/jsp/administrar/admin_est_detalle.jsp" />
+        </action> 
+        
+        <action path="/productos/destacados" type="producto.ProductoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/productos/prod_listado.jsp"/>
+        </action>        
+        <action path="/productos/vendidos" type="producto.ProductoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/productos/prod_listado.jsp"/>
+        </action>        
+        <action path="/productos/nuevos" type="producto.ProductoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/productos/prod_listado.jsp"/>
+        </action>        
+        <action path="/productos/buscar" type="producto.ProductoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/productos/prod_listado.jsp"/>
+        </action>        
+        <action path="/productos/categorias" type="producto.ProductoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/productos/prod_listado.jsp"/>
+        </action>        
+        <action path="/productos/detalle" type="producto.ProductoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/productos/prod_detalle.jsp"/>
+        </action>
+                
+        <action path="/pedido/agregar" type="pedido.PedidoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/productos/prod_detalle.jsp"/>
+        </action>
+        <action path="/pedido/eliminar" type="pedido.PedidoAction" parameter="metodo">
+            <forward name="success"  path="/pedido/carro-de-la-compra/" redirect="true"/>
+        </action>
+        <action path="/pedido/detalle" type="pedido.PedidoAction" parameter="metodo">
+            <forward name="success"  path="/jsp/pedidos/pedido_detalle.jsp"/>
+        </action>
+        <action path="/pedido/modificar" type="pedido.PedidoAction" parameter="metodo">
+            <forward name="success"  path="/pedido/carro-de-la-compra/" redirect="true"/>
+        </action>
+        <action path="/pedido/confirmar/paso1" type="pedido.PedidoAction" 
+            parameter="metodo"
+            name="pedidoForm"
+            scope="request" 
+            validate="false" >
+            <forward name="fail"  path="/usuario/acceder/" redirect="true"/>
+            <forward name="success"  path="/jsp/pedidos/pedido_form.jsp"/>
+        </action>
+        <action path="/pedido/confirmar/paso2" type="pedido.PedidoAction" 
+            parameter="metodo"
+            name="pedidoForm"
+            scope="request" 
+            validate="true"
+            cancellable="true"
+            input="/jsp/pedidos/pedido_form.jsp" >
+            <forward name="fail"  path="/usuario/acceder/" redirect="true"/>
+            <forward name="success"  path="/jsp/pedidos/pedido_resumen.jsp"/>
+        </action>
+        <action path="/pedido/confirmar/paso2b" type="pedido.PedidoAction" parameter="metodo">
+            <forward name="fail"  path="/usuario/acceder/" redirect="true"/>
+            <forward name="success"  path="/jsp/pedidos/pedido_resumen.jsp"/>
+        </action>
+        <action path="/pedido/confirmar/paso3" type="pedido.PedidoAction" parameter="metodo">
+            <forward name="fail"  path="/usuario/acceder/" redirect="true"/>
+            <forward name="success"  path="/jsp/pedidos/pedido_confirmacion.jsp"/>
+        </action>
+        
+        <action path="/inicio" forward="/jsp/home.jsp"/>
+        <action path="/info/contactar" forward="/jsp/info/contactar.jsp"/>
+        <action path="/info/conocenos" forward="/jsp/info/conocenos.jsp"/>
+        <action path="/info/comprar" forward="/jsp/info/comprar.jsp"/>
+        <action path="/info/privacidad-de-datos" forward="/jsp/info/privacidad.jsp"/>
+        <action path="/info/condiciones-de-venta" forward="/jsp/info/condiciones_venta.jsp"/>
+        <action path="/info/costes-del-envio" forward="/jsp/info/costes.jsp"/>
+        <action path="/info/mapa-del-web" forward="/jsp/info/mapa.jsp"/>
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>
