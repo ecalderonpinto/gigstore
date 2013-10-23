@@ -324,7 +324,7 @@ a:hover {
 
 #bigbanner div.cuadro p.links {
     position: relative;
-    top: 120px;
+    top: 90px;
 }
 
 #bigbanner div.cuadro div.entrada div.listaprods ol#controls {
@@ -646,9 +646,48 @@ ol#controls li a:focus, #prevBtn a:focus, #nextBtn a:focus{outline:none;}
     margin-right: 50px;
 }
 
-div#contenido_g div.cuadro div.entrada form select {
-/*    padding-top: 7px;*/
-/*    margin-left: 55px;*/
+.cuadro div.orden_links {
+    float: right;
+    margin-top: 5px;
+    margin-right: 60px;
+}
+
+.cuadro div.up {
+    background: url('/ejemplo-tienda/images/atmosphere/flecha_arriba_p.png') no-repeat right;
+    margin-right: 10px;
+    padding-right: 15px;
+    display: inline;
+}
+
+.cuadro div.dn {
+    background: url('/ejemplo-tienda/images/atmosphere/flecha_abajo_p.png') no-repeat right;
+    margin-right: 10px;
+    padding-right: 15px;
+    display: inline;
+}
+
+.cuadro a.orden {
+    font-size: 0.9em;
+}
+
+.cuadro a.orden:hover {
+    text-decoration: underline;
+}
+
+.cuadro form.nregs-form {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.cuadro form.nregs-form div.styled-select {
+    width: 60px;
+    margin-bottom: -8px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.cuadro form.nregs-form div.styled-select select {
+    width: 80px;
 }
 
 .mailing {
@@ -873,7 +912,7 @@ td.valor {
 #cuadrodatos #formcarrito .nodisp {
     position: relative;
     top:20px;
-    left: -25px;
+    left: 0px;
     font-size: 1.1em;
     font-weight: bold;
     color: #CD3788;
@@ -1235,6 +1274,15 @@ img.adminimg2 {
 
 #lateral a:hover {
     text-decoration: underline;
+}
+
+#lateral ul.nube {
+    width: 235px;
+    text-align: justify;
+}
+
+#lateral ul.nube li {
+    display: inline;
 }
 
 #minicarrito {
