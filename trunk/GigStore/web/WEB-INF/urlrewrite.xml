@@ -121,6 +121,11 @@
     </rule>
 
     <rule>
+        <from>/etiquetas/(.*)/$</from>
+        <to>/productos/destacados.do?metodo=mostrar_listado&amp;accion=etiquetas&amp;tag=$1</to>
+    </rule>
+
+    <rule>
         <from>/categorias/$</from>
         <to>/productos/categorias.do?metodo=mostrar_listado&amp;accion=listacats</to>
     </rule>
